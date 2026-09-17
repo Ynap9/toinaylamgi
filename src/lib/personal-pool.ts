@@ -1,28 +1,27 @@
-import { foods, type Food } from './foods';
-import { createFoodSelector, priceRarity } from './case-mechanics';
-export type CustomFood = { id: string; name: string; price: number; veg: boolean };
-export type PoolProfile = { disabled: number[]; custom: CustomFood[]; revision: number };
+import { todos, type Todo } from './todos';
+import { copy } from './i18n';
+export type CustomTodo = { id: string; name: string };
+export type PoolProfile = { disabled: number[]; custom: CustomTodo[]; revision: number };
 export const emptyProfile = (): PoolProfile => ({ disabled: [], custom: [], revision: 0 });
-const ids = new Set(foods.map(f => f.image));
+const ids = new Set(todos.map(f => f.image));
 export function validateProfile(input: unknown): PoolProfile {
  if (!input || typeof input !== 'object') throw new Error('Invalid profile');
  const p = input as Record<string, unknown>;
  if (Object.keys(p).some(k => !['disabled','custom','revision'].includes(k)) || !Array.isArray(p.disabled) || !Array.isArray(p.custom) || !Number.isSafeInteger(p.revision) || (p.revision as number)<0) throw new Error('Invalid profile');
- if (p.disabled.length>foods.length || p.custom.length>50 || new Set(p.disabled).size!==p.disabled.length || p.disabled.some(id=>!ids.has(id))) throw new Error('Invalid dishes');
- const custom = p.custom.map((item: unknown): CustomFood => {
-  if (!item || typeof item!=='object') throw new Error('Invalid dish');
+ if (p.disabled.length>todos.length || p.custom.length>50 || new Set(p.disabled).size!==p.disabled.length || p.disabled.some(id=>!ids.has(id))) throw new Error('Invalid todos');
+ const custom = p.custom.map((item: unknown): CustomTodo => {
+  if (!item || typeof item!=='object') throw new Error('Invalid todo');
   const f=item as Record<string,unknown>;
-  if(Object.keys(f).some(k=>!['id','name','price','veg'].includes(k)) || typeof f.id!=='string' || !/^[0-9a-f-]{36}$/i.test(f.id) || typeof f.name!=='string' || !f.name.trim() || f.name.length>60 || /[\x00-\x1f\x7f]/.test(f.name) || !Number.isInteger(f.price) || (f.price as number)<10 || (f.price as number)>500 || typeof f.veg!=='boolean') throw new Error('Invalid dish');
-  return {id:f.id,name:f.name.trim().normalize('NFC'),price:f.price as number,veg:f.veg};
+  if(Object.keys(f).some(k=>!['id','name'].includes(k)) || typeof f.id!=='string' || !/^[0-9a-f-]{36}$/i.test(f.id) || typeof f.name!=='string' || !f.name.trim() || f.name.length>60 || /[\x00-\x1f\x7f]/.test(f.name)) throw new Error('Invalid todo');
+  return {id:f.id,name:f.name.trim().normalize('NFC')};
  });
- if(new Set(custom.map(f=>f.id)).size!==custom.length || foods.length-p.disabled.length+custom.length<1) throw new Error('Keep at least one dish');
+ if(new Set(custom.map(f=>f.id)).size!==custom.length || todos.length-p.disabled.length+custom.length<1) throw new Error('Keep at least one todo');
  return {disabled:p.disabled as number[],custom,revision:p.revision as number};
 }
-export function personalFoods(profile: PoolProfile): Food[] {
- return [...foods.filter(f=>!profile.disabled.includes(f.image)), ...profile.custom.map(f=>({...f,customId:f.id,image:-1,sub:'Món của tôi',quip:'',rarity:priceRarity(f.price)}))];
+export function personalTodos(profile: PoolProfile): Todo[] {
+ return [...todos.filter(f=>!profile.disabled.includes(f.image)), ...profile.custom.map(f=>({customId:f.id,name:f.name,image:-1,sub:copy.vi.customTodo,quip:'',rarity:0}))];
 }
-export function personalSelector(population: Food[], target: number) {
- if(!population.length) return null;
- const feasible=Math.max(Math.min(...population.map(f=>f.price)),Math.min(target,Math.max(...population.map(f=>f.price))));
- return createFoodSelector(population,feasible);
+export function pickTodo(items: Todo[], random=Math.random): Todo {
+ if(!items.length) throw new Error('No todos');
+ return items[Math.min(items.length-1,Math.floor(random()*items.length))];
 }

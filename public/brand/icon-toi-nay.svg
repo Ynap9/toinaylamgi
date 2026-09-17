@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 6 240 208" width="240" height="208">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe066"/>
+      <stop offset="1" stop-color="#e0a800"/>
+    </linearGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2440"/>
+      <stop offset="1" stop-color="#0b0f1c"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#0a0a0a" stroke-linejoin="round">
+    <path d="M52 94 78 20h168l-14 74Z" fill="url(#gold)" stroke-width="10"/>
+    <path d="M78 36h150l-10 46H62Z" fill="#11151f" stroke-width="4"/>
+    <rect x="150" y="14" width="34" height="18" rx="3" fill="#6aa84f" stroke-width="6"/>
+    <path d="M36 96h208v108H36Z" fill="url(#gold)" stroke-width="10"/>
+    <rect x="60" y="112" width="160" height="80" rx="6" fill="url(#night)" stroke-width="5"/>
+    <path d="M36 118h14v58H36Z" fill="#c78f00" stroke-width="5"/>
+    <path d="M230 118h14v58h-14Z" fill="#c78f00" stroke-width="5"/>
+  </g>
+  <path d="M152 125a30 30 0 1 0 22 50a26 26 0 1 1-22-50Z" fill="#ffe59a"/>
+  <path d="m103 132 4 10 10 3-10 3-4 10-3-10-10-3 10-3Z" fill="#fff5ce"/>
+  <path d="m196 156 3 7 7 2-7 2-3 7-2-7-7-2 7-2Z" fill="#fff5ce"/>
+  <circle cx="96" cy="172" r="3" fill="#fff5ce"/>
+</svg>
