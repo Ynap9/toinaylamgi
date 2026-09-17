@@ -50,7 +50,7 @@ If cookies are blocked or the list is too large, the app will let you know it co
 
 ## Contributing
 
-Everyone is welcome to [report bugs, suggest ideas](https://github.com/Ynap9/toinaylamgi/issues/new), or fork the repo and [submit a PR to `main`](https://github.com/Ynap9/toinaylamgi/compare). Use Vietnamese or English, and feel free to open a draft PR for discussion.
+Everyone is welcome to [report bugs, suggest ideas](https://github.com/truanayangi-com/truanayangi/issues/new), or fork the repo and [submit a PR to `main`](https://github.com/truanayangi-com/truanayangi/compare). Use Vietnamese or English, and feel free to open a draft PR for discussion. No approved issue or organization membership is required.
 
 Describe your change and how you checked it. For code changes, run tests and a build when possible. Keep secrets out of the repo and credit the sources you use.
 

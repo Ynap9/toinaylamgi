@@ -50,7 +50,7 @@ Nếu cookie bị chặn hoặc danh sách quá lớn, ứng dụng sẽ báo ch
 
 ## Đóng góp
 
-Chào đón mọi người [báo lỗi, đề xuất ý tưởng](https://github.com/Ynap9/toinaylamgi/issues/new) hoặc fork repo và [gửi PR vào `main`](https://github.com/Ynap9/toinaylamgi/compare). Bạn có thể dùng tiếng Việt hoặc tiếng Anh, mở draft PR để trao đổi.
+Chào đón mọi người [báo lỗi, đề xuất ý tưởng](https://github.com/truanayangi-com/truanayangi/issues/new) hoặc fork repo và [gửi PR vào `main`](https://github.com/truanayangi-com/truanayangi/compare). Bạn có thể dùng tiếng Việt hoặc tiếng Anh, mở draft PR để trao đổi, không cần được duyệt issue trước hay tham gia tổ chức.
 
 Chỉ cần mô tả rõ thay đổi và cách đã kiểm tra. Với thay đổi code, hãy chạy test và build khi có thể. Giữ thông tin bí mật ngoài repo và ghi công nguồn sử dụng.
 
