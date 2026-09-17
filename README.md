@@ -1,20 +1,27 @@
-# Trưa Nay Ăn Gì 🍜
+# Tối Nay Làm Gì 🌙
 
 **Tiếng Việt** · [English](README.en.md)
 
-**Website chính thức: [truanayangi.com](https://truanayangi.com/)**
+**Mã nguồn: [github.com/Ynap9/toinaylamgi](https://github.com/Ynap9/toinaylamgi)**
 
-Chưa biết ăn gì trưa nay? Mở hòm, quay món và để bữa trưa có chút bất ngờ.
+Tối nay chưa biết làm gì? Mở hòm, quay một lựa chọn và để buổi tối có chút bất ngờ: đọc truyện, chơi game, đánh cờ, đi cafe, xem phim, code hay về quê.
 
-Đây là phiên bản cộng đồng chạy trên máy của bạn, không cần đăng nhập hay backend. Bạn có thể lọc món, thêm danh sách món riêng và lưu sở thích ngay trong trình duyệt.
+Ứng dụng chạy hoàn toàn trên máy của bạn, không cần đăng nhập hay backend. Bạn có thể bật/tắt các lựa chọn có sẵn, thêm việc của riêng mình và lưu ngay trong trình duyệt.
+
+## Tính năng
+
+- Hòm quay kiểu CS với âm thanh, độ hiếm và hiệu ứng mở hòm.
+- 16 lựa chọn có sẵn, mỗi lựa chọn có ảnh minh hoạ và một câu lục bát vui.
+- Bật/tắt lựa chọn có sẵn, thêm tối đa 50 lựa chọn tự đặt tên.
+- Giao diện tiếng Việt và tiếng Anh.
 
 ## Chạy trên máy
 
 Cần **Node.js 22.12+** và phiên bản **pnpm** ghi trong [package.json](package.json).
 
 ```sh
-git clone https://github.com/truanayangi-com/truanayangi.git
-cd truanayangi
+git clone https://github.com/Ynap9/toinaylamgi.git
+cd toinaylamgi
 pnpm install --frozen-lockfile
 pnpm start
 ```
@@ -31,24 +38,22 @@ pnpm preview    # Xem bản build tại http://127.0.0.1:4173
 
 Máy chủ chỉ lắng nghe trên `127.0.0.1`. Sau khi cài dependencies, ứng dụng tải tài nguyên từ máy; các liên kết bên ngoài chỉ mở khi bạn bấm vào.
 
+## Thêm lựa chọn có sẵn
+
+Danh sách nằm ở [src/lib/todos.ts](src/lib/todos.ts). Mỗi mục gồm `name`, `sub`, `rarity` (0–4), `image` và `quip`. Ảnh tương ứng đặt tại `public/todo-<image>.webp`, tên tiếng Anh thêm trong [src/lib/i18n.ts](src/lib/i18n.ts). Nhớ ghi nguồn ảnh vào [ATTRIBUTION.md](ATTRIBUTION.md).
+
 ## Dữ liệu của bạn
 
-Sở thích, danh sách món và lượt quay tự lưu bằng cookie trong trình duyệt hiện tại. Xóa cookie sẽ đặt lại dữ liệu; dữ liệu không đồng bộ giữa các thiết bị. Lượt quay hiển thị là của riêng trình duyệt này.
+Danh sách lựa chọn, ngôn ngữ, âm thanh và lượt quay tự lưu bằng cookie trong trình duyệt hiện tại. Xóa cookie sẽ đặt lại dữ liệu; dữ liệu không đồng bộ giữa các thiết bị. Lượt quay hiển thị là của riêng trình duyệt này.
 
-Nếu cookie bị chặn hoặc danh sách món quá lớn, ứng dụng sẽ báo chưa lưu.
-
-## GitHub Pages và website chính
-
-GitHub Pages chỉ chuyển hướng đến https://truanayangi.com/. Đây là cách giữ chức năng đồng nhất: người truy cập luôn dùng cùng frontend production, API và cookie đăng nhập cùng origin, thay vì một ứng dụng tĩnh thứ hai dễ lệch tính năng hoặc mất đăng nhập khi tải lại. Chỉ xuất bản `pages-redirect/` lên `gh-pages`; không đưa bản build local lên đó. Các sửa đổi UI tĩnh và chuyển động vòng quay dùng chung cần được cập nhật đồng thời ở repo này và frontend production riêng tư.
+Nếu cookie bị chặn hoặc danh sách quá lớn, ứng dụng sẽ báo chưa lưu.
 
 ## Đóng góp
 
-Chào đón mọi người [báo lỗi, đề xuất ý tưởng](https://github.com/truanayangi-com/truanayangi/issues/new) hoặc fork repo và [gửi PR vào `main`](https://github.com/truanayangi-com/truanayangi/compare). Bạn có thể dùng tiếng Việt hoặc tiếng Anh, mở draft PR để trao đổi, không cần được duyệt issue trước hay tham gia tổ chức.
+Chào đón mọi người [báo lỗi, đề xuất ý tưởng](https://github.com/Ynap9/toinaylamgi/issues/new) hoặc fork repo và [gửi PR vào `main`](https://github.com/Ynap9/toinaylamgi/compare). Bạn có thể dùng tiếng Việt hoặc tiếng Anh, mở draft PR để trao đổi.
 
-Chỉ cần mô tả rõ thay đổi và cách đã kiểm tra. Với thay đổi code, hãy chạy test và build khi có thể; maintainer sẽ hỗ trợ và review trước khi merge. Giữ thông tin bí mật ngoài repo và ghi công nguồn sử dụng.
+Chỉ cần mô tả rõ thay đổi và cách đã kiểm tra. Với thay đổi code, hãy chạy test và build khi có thể. Giữ thông tin bí mật ngoài repo và ghi công nguồn sử dụng.
 
 ## Nguồn gốc
 
-Repo được chuyển từ `nagisanzenin/truanayangi`, giữ nguyên lịch sử Git và đóng góp cộng đồng. Xem [ghi công tác giả và tài nguyên](ATTRIBUTION.md).
-
-[GitHub Pages](https://truanayangi-com.github.io/truanayangi/) chuyển hướng đến website chính thức. Chỉ thư mục `pages-redirect/` được xuất bản lên `gh-pages`; mã ứng dụng trong repo dành cho việc chạy trên máy.
+Dự án phát triển tiếp từ [Trưa Nay Ăn Gì](https://github.com/truanayangi-com/truanayangi) của nagisanzenin và cộng đồng, giữ nguyên lịch sử Git. Ảnh minh hoạ từ Unsplash, âm thanh từ SourceSounds. Xem [ghi công tác giả và tài nguyên](ATTRIBUTION.md).
